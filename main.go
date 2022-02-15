@@ -28,6 +28,7 @@ func main() {
 	router.GET("/student", controller.GetStudents)
 	router.POST("/student", controller.CreateStudent)
 	router.DELETE("/student/:student", controller.DeleteStudent)
+	router.PATCH("/student/:student", controller.UpdateStudent)
 
 	// Start server
 	router.Logger.Fatal(router.Start(":8080"))

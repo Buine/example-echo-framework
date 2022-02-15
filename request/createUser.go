@@ -13,7 +13,6 @@ type CreateStudentRequest struct {
 	CountryId int `json:"country_id"`
 }
 
-
 func CreateStudentRequestToStudent(request CreateStudentRequest) model.Student {
 	return model.Student{
 		FirstName: request.FirstName,
