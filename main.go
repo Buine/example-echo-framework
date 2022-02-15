@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"yuno/echo-example/common/utils"
 	"yuno/echo-example/controller"
 	"yuno/echo-example/database"
 	_ "yuno/echo-example/docs"
@@ -13,6 +14,7 @@ import (
 )
 
 func init() {
+	utils.LoggerInit()
 	err := database.ConnectPostgres()
 	if err != nil {
 		fmt.Println(err)
@@ -24,7 +26,7 @@ func main() {
 	router := echo.New()
 
 	// Middleware
-	router.Use(middleware.Logger())
+	//router.Use(middleware.Logger())
 	router.Use(middleware.Recover())
 	router.Use(middleWare.MiddlewareAuth)
 

@@ -10,6 +10,7 @@ import (
 
 func MiddlewareAuth(next echo.HandlerFunc) echo.HandlerFunc {
 	return func(context echo.Context) error {
+		utils.Logger.Info("Esto es una prueba en Middleware")
 		if !utils.ContainsInArray(context.Path(), utils.SkipRoutes) {
 			context.JSON(http.StatusForbidden, response.ErrorResponse{
 				Code:    "InternalError",
