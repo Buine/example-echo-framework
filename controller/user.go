@@ -11,6 +11,10 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
+type StudentController struct {
+	echo.Context
+}
+
 func GetStudents(context echo.Context) error {
 	connection := database.GetConnection()
 	students := new([]model.Student)
@@ -24,6 +28,14 @@ func GetStudents(context echo.Context) error {
 	return context.JSON(http.StatusOK, listStudentsResponse)
 }
 
+// @Tags         Students
+// @Title        Create Students
+// @Description  Create Students
+// @Param        body  body   request.CreateStudentRequest  true  "body for Students content"
+// @Produce  json
+// @Success 200 {object} response.UserResponse
+// @Failure 404 {object} response.ErrorResponse
+// @Router /student [post]
 func CreateStudent(context echo.Context) error {
 	requestStudent := new(request.CreateStudentRequest)
 	if err := context.Bind(&requestStudent); err != nil {

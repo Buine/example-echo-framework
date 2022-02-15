@@ -1,4 +1,4 @@
-package request
+package response
 
 import (
 	"time"
@@ -13,8 +13,8 @@ type UserResponse struct {
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
 
-	CountryName string	`json:"country_name,omitempty"` 
-	CountryISO string   `json:"country_iso,omitempty"`
+	CountryName string `json:"country_name,omitempty"`
+	CountryISO  string `json:"country_iso,omitempty"`
 }
 
 func FromUserModel(student model.Student) UserResponse {
@@ -30,13 +30,13 @@ func FromUserModel(student model.Student) UserResponse {
 
 func FromUserModelAndCountry(student model.Student, country model.Country) UserResponse {
 	return UserResponse{
-		Id:        student.Id,
-		FirstName: student.FirstName,
-		LastName:  student.LastName,
-		BornDate:  student.BornDate,
-		CreatedAt: student.CreatedAt,
-		UpdatedAt: student.UpdatedAt,
+		Id:          student.Id,
+		FirstName:   student.FirstName,
+		LastName:    student.LastName,
+		BornDate:    student.BornDate,
+		CreatedAt:   student.CreatedAt,
+		UpdatedAt:   student.UpdatedAt,
 		CountryName: country.FirstName,
-		CountryISO: country.IsoName,
+		CountryISO:  country.IsoName,
 	}
 }
